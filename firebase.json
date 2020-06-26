@@ -1,0 +1,33 @@
+{
+	"hosting": {
+		"predeploy": "pushd next-app && npm run build && npm run export && popd",
+		"public": "next-app/out",
+		"ignore": [
+			"firebase.json",
+			"**/.*",
+			"**/node_modules/**"
+		],
+		"rewrites": [
+			{
+				"source": "/api",
+				"function": "launchesApi"
+			},
+			{
+				"source": "/calendar",
+				"function": "launchesCal"
+			},
+			{
+				"source": "/starlink/api",
+				"function": "starlinkApi"
+			},
+			{
+				"source": "/starlink",
+				"destination": "/starlink.html"
+			},
+			{
+				"source": "/",
+				"destination": "/index.html"
+			}
+		]
+	}
+}
